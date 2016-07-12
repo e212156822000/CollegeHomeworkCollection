@@ -1,0 +1,34 @@
+body{
+    padding-top:70px;
+}
+
+.pad{
+    height:30px;
+}
+.space{
+    margin-top:10px;
+}
+.general-color{
+    color:#008A00;
+}
+.fix-color{
+    color:#008A8A;
+}
+.waiting-color{
+    color:#4F008A;
+}
+
+.better-chinese{
+    font-family:"Mircosoft JhengHei";
+}
+
+.t-head{
+    background-color: #FFEB3B;
+}
+
+.t-content{
+    background-color: #FFFFFF;
+}
+table{
+    border-color: #000000;
+}

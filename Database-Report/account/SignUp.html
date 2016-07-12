@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+    <style>
+        header, nav, section, article, footer 
+        {
+            display: block;
+        }
+        header, nav, section, article, footer
+        {
+            font-family: cursive;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+        }
+        header, footer
+        {
+            width: 100%;
+        }
+        header
+        {
+            background-color: steelblue;
+            height: 50px;
+            font-size: 30px;
+        }
+        nav
+        {
+            position: fixed;
+            top:68px;
+            right: 20px;
+            background-color: darkgray;
+            width: 40%;
+            height: 520px;
+        }
+        section
+        {
+            height: 500px;
+            width: 55%;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 10px;
+            font-size: 20px;
+        }
+        footer
+        {
+            background-color: steelblue;
+            height:30px; 
+            font-size: 15px;
+            font-weight:bold;
+        }
+        p1
+        {
+            position:absolute;
+            top:-5px;
+            left:125px;
+        }
+        p2
+        {
+            position:absolute;
+            top:90px;
+            left:180px;
+        }
+        p3
+        {
+            position:absolute;
+            top:90px;
+            left:-5px;
+        }
+        p4
+        {
+            position:absolute;
+            top:90px;
+            right:-10px;
+        }
+        
+     </style> 
+</head>
+<body>
+    <header>  
+        NCUGRAM  
+    </header>  
+    <nav>
+        <p4><img src="https://goo.gl/U9MxGx" height="350" ></p4>
+        <p2><img src="https://goo.gl/tesAfs" height="350" ></p2>
+        <p1><img src="http://goo.gl/EYjUxM" height="550" ></p1>
+        <p3><img src="https://goo.gl/qeKHbp" height="350" ></p3>
+    </nav>
+    <section>
+        <article>
+            <img src="https://goo.gl/LM21hO" height="220">
+		<script type="text/javascript"> 
+			function check_form() {
+
+    	       var userid = document.login.userid.value;
+    		      if (userid == "") {
+    		      alert("請填帳號哦!");
+    		      return false;
+                    }
+		      var psw = document.login.psw.value;
+		      if (psw == "") {
+			     alert("請填密碼哦!");
+			     return false;
+		      }
+		      return confirm("確定送出?");
+		  }
+		</script>
+            <form name="login" method="POST" action="logincheck.php" onsubmit="return check_form();">
+            User ID: <input type="text" name="userid"><br><br>
+            Password: <input type="password" name="psw"><br>
+            <a href="連結前往的網址" style="text-decoration:none;color:white;">Forgot?</a><br><br>
+            <input type="submit" 
+                   value="Log In" 
+                   style="width:250px;height:30px;border:1px white none;background-color:steelblue;
+                          font-family:cursive;font-size:15px;font-weight:bold;color:white;">
+            </form>
+            <hr color="white" size="2" width="35%">
+            Don't have an account? <a href="register.php" style="text-decoration:none;color:white;">Sign up</a>
+        </article>
+    </section>      
+    <footer>  
+        Copyright © 2016 NCU MIS DataBase Management Class Team 12 All rights reserved       
+    </footer>  
+</body>
+</html>
