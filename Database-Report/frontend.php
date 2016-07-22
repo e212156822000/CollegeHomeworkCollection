@@ -1,10 +1,3 @@
-<?php
-	include('includes/calendar.php');
-	session_start();
- 	if(!isset ($_SESSION['userid'])){
-		header ('location: account/nologin.php');
-	}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -17,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-material-design.css">
+    <link rel="stylesheet" href="css/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="css/book.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <!-- 最新編譯和最佳化的 JavaScript -->

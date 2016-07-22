@@ -1,9 +1,5 @@
 <?php
     require("includes/db_connect.php");
-    session_start();
-    if(!isset ($_SESSION['userid'])){
-        header ('location: account/nologin.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

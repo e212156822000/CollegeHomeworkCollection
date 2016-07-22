@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 �?04 ??30 ??16:42
+-- 產生時間： 2016 �?07 ??22 ??09:05
 -- 伺服器版本: 5.6.17
 -- PHP 版本： 5.5.12
 
@@ -23,28 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `account`
---
-
-CREATE TABLE IF NOT EXISTS `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '使用者名稱',
-  `userid` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '帳號',
-  `password` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
-
---
--- 資料表的匯出資料 `account`
---
-
-INSERT INTO `account` (`id`, `username`, `userid`, `password`, `email`) VALUES
-(5, 'test', 'test1', '05a671c66aefea124cc08b76ea6d30bb', 'test@gmail.com');
-
--- --------------------------------------------------------
-
---
 -- 資料表結構 `info`
 --
 
@@ -58,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `info` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=29 ;
 
 --
 -- 資料表的匯出資料 `info`
@@ -82,7 +60,13 @@ INSERT INTO `info` (`title`, `name`, `email`, `department`, `professor`, `messag
 ('Picnicking', 'woody', 'woody', 'woody', 'woody', 'woody', 19, 1456873200),
 ('Picnicking', 'woody', 'woody', 'woody', 'woody', 'woody', 20, 1458946800),
 ('Movie', 'sd', 'sd', 'sd', 'sd', 'sd', 21, 1457996400),
-('Camp', 'ww', 'ww', 'w', 'w', 'w', 22, 1467842400);
+('Camp', 'ww', 'ww', 'w', 'w', 'w', 22, 1467842400),
+('Database', 'world', 'world', 'MIS', 'MIS', 'MIS', 23, 1470175200),
+('idiot', '', '', '', '', '', 24, 1462226400),
+('è›¤èœŠçš„æ¸£', 'jonson', '', '', 'tomous', '', 25, 1462226400),
+('æˆ‘çš„å°ç³»çµ±', 'Jolin Cai', '123@123', 'CSIE', 'å¦¹æœ‰', 'å¤§æ¦‚é€™æ¨£', 26, 1467324000),
+('TRY', 'å“ˆå›‰', 'å—¨', 'å–”å–”', 'HH@', 'YO', 27, 1468360800),
+('çœŸçš„æ²’å•é¡Œ', 'å¯å—Ž', 'å–”å–”', 'è€¶', 'å‘¼', 'å“ˆ', 28, 1467496800);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
