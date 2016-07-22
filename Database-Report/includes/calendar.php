@@ -34,7 +34,7 @@
 			//設定每天的超連結參數，傳月份跟當天日期。
 			$calendar.= '<a id="'.$timestamp.'" href="?month='.$month.'&day='.$list_day.'"" class="day-number">'.$list_day.'</a><br>';
 			//依據時間選擇當天的活動(名稱)有哪些
-			$sql = "SELECT title FROM info WHERE time = '".$timestamp."'" ;
+			$sql = "SELECT title FROM ".$tablename." WHERE time = '".$timestamp."'" ;
 			//印出活動名稱，可能一天有多個
 			foreach($db->query($sql) as $title){
 				$calendar.='<p class="day-event">'.$title['title'].'</p>';

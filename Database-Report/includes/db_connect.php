@@ -4,6 +4,7 @@
 	$username = "Jolin";
 	$password = "0000";
 	$dbname = "db_report";
+	$tablename = "info";
 
 	try 
 	{

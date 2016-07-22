@@ -48,7 +48,7 @@
          $message = $_POST['message'];
          $time = $_POST['time'];
          for($i=0; $i < count($time); $i++){
-             $query = "INSERT INTO info (title,name,email,department, professor,message,time)" . "VALUES ('".$title."', '".$name."', '".$email."', '".$department."', '".$professor."', '".$message."','".$time[$i]."')";
+             $query = "INSERT INTO ".$tablename." (title,name,email,department, professor,message,time)" . "VALUES ('".$title."', '".$name."', '".$email."', '".$department."', '".$professor."', '".$message."','".$time[$i]."')";
              //  下指令
              $result = mysqli_query($dbc, $query)
              or die("Error: " . $query . "<br>" . mysqli_error($dbc));
