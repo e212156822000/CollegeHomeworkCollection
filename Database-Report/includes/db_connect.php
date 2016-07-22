@@ -1,9 +1,9 @@
 <?php
 	
-	$servername = "127.0.0.1";
-	$username = "Jolin";
-	$password = "0000";
-	$dbname = "db_report";
+	$servername = "domain_name";
+	$username = "db_username";
+	$password = "db_password";
+	$dbname = "db_name";
 
 	try 
 	{
