@@ -1,0 +1,9 @@
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\bin\Debug\MathTest.exe.config
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\bin\Debug\MathTest.exe
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\bin\Debug\MathTest.pdb
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.csprojResolveAssemblyReference.cache
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.Form1.resources
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.Properties.Resources.resources
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.csproj.GenerateResource.Cache
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.exe
+c:\users\jolin\documents\visual studio 2015\Projects\MathTest\MathTest\obj\Debug\MathTest.pdb

@@ -1,0 +1,9 @@
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe.config
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\bin\Debug\PictureViewer.pdb
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csprojResolveAssemblyReference.cache
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Form1.resources
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.GenerateResource.Cache
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.exe
+c:\users\jolin\documents\visual studio 2015\Projects\PictureViewer\PictureViewer\obj\Debug\PictureViewer.pdb
