@@ -1,7 +1,7 @@
 <h1>資料庫報告實作</h1>
 <h3>資料庫建置需要</h3>
 1.準備資料庫和具有其權限的User<br>
-2.使用db中的sql檔案，寫入phpmyadbin中。<br>
+2.使用db中的sql檔案，寫入phpmyadmin中。<br>
 <br>
 或者<br>
 <br>
