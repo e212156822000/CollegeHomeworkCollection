@@ -12,7 +12,7 @@ public class DSHW1_2A_103403513{
 
         String origin = str.next(); // for users to input
         //step 1
-        while(!check_parethesis(origin)) {
+        while(!check_parenthesis(origin)) {
 
             System.out.println("Please Enter Again:");
             origin = str.next();
@@ -82,7 +82,7 @@ public class DSHW1_2A_103403513{
 
         Stack<String> st1 = new Stack<String>();
 
-        String post = ""; //userd to get postfix's result
+        String post = ""; //used to get postfix's result
 
         String operation_st ="";//used to get stack's data
 
@@ -90,7 +90,7 @@ public class DSHW1_2A_103403513{
 
         String temp;//to catch data temporary , such as from pop and push.
         
-        //print title of ecah columns
+        //print title of each columns
         System.out.printf("%-15s %-20s %-20s\n","InputBuffer","OperatorStack","OutputString");
 
         System.out.printf("%-15s %-20s %-20s\n",origin,"Empty","Empty");
@@ -102,19 +102,19 @@ public class DSHW1_2A_103403513{
             if( origin.charAt(i) == '(' ){
 
                  st1.push(Character.toString( origin.charAt(i) ) );
-                 //concate output string,always follows behind a operation such as pop and push
+                 //concat output string,always follows behind a operation such as pop and push
                  operation_st += Character.toString(origin.charAt(i));
                  operation_st += " ";
 
             }
-            //continusouly popstack until meet ')'
+            //continuously popstack until meet ')'
             else if(origin.charAt(i) == ')'){
 
                 temp = st1.pop();
                 //delete last word from string
                 operation_st = operation_st.substring(0,operation_st.lastIndexOf(" ")-1);
                 while( temp.charAt(0) != '(' ){
-                    //concate output string,always follows behind a operation such as pop and push
+                    //concat output string,always follows behind a operation such as pop and push
                     post += temp;
                     temp = st1.pop();
                     //delete last word from string
@@ -132,16 +132,16 @@ public class DSHW1_2A_103403513{
                     while( !st1.empty() &&  new_has_low_priority(Character.toString( origin.charAt(i) ) , temp )  ){
 
                         temp = st1.pop();
-                        //delete last word from string , alwasys follows behind a pop
+                        //delete last word from string , always follows behind a pop
                         operation_st = operation_st.substring(0,operation_st.lastIndexOf(" ")-1);
-                        //concate output string,always follows behind a operation such as pop and push
+                        //concat output string,always follows behind a operation such as pop and push
                         post += temp;
                         System.out.printf("%-15s %-20s %-20s\n",origin.substring(i,len),(st1.empty()?"Empty":operation_st),post);
                         if(!st1.empty()) temp = st1.peek();
                     }
                 }
                 st1.push(Character.toString(origin.charAt(i)));
-                //concate output string,always follows behind a operation such as pop and push
+                //concat output string,always follows behind a operation such as pop and push
                 operation_st += Character.toString(origin.charAt(i));
                 operation_st += " ";
 
@@ -159,9 +159,9 @@ public class DSHW1_2A_103403513{
         //clear a stack and print all operators out
         while(!st1.empty()){
             temp = st1.pop();
-            //delete last word from string , alwasys follows behind a pop
+            //delete last word from string , always follows behind a pop
             operation_st = operation_st.substring(0,operation_st.lastIndexOf(" ")-1);
-            //concate output string,always follows behind a operation such as pop and push
+            //concat output string,always follows behind a operation such as pop and push
             post += temp;
             System.out.printf("%-15s %-20s %-20s\n"," ",(st1.empty()?"Empty":operation_st),post);
         }
@@ -210,8 +210,8 @@ public class DSHW1_2A_103403513{
         else return false;
     }//end priority
 
-    //step1: check if the parethesis is matched
-    private static boolean check_parethesis(String origin){
+    //step1: check if the parenthesis is matched
+    private static boolean check_parenthesis(String origin){
 
         Stack<String> st = new Stack<String>();
         
