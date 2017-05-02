@@ -7,7 +7,7 @@
 <br>
 輸入以下指令。建立所需Table
 <pre>
-  CREATE TABLE table_name
+  CREATE TABLE info
   (
     title VARCHAR(30),
     name VARCHAR(30),
