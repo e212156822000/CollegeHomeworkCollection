@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;CE1002_A4/src/ce1002.s103403513&apos;&#x0D;&#x0A;- Original project: &apos;CE1002_A4&apos;&#x0D;&#x0A;- Destination element: &apos;CE1002_A4/src/ce1002.s103403513&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Ryu.java&#x0D;&#x0A;     ChunLi.java&#x0D;&#x0A;     GameCharacter.java&#x0D;&#x0A;     Main.java&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="/src&lt;ce1002.s103403513" element1="Ryu.java" element2="ChunLi.java" element3="GameCharacter.java" element4="Main.java" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1492934176524" units="0" version="1.0"/>
+</session>

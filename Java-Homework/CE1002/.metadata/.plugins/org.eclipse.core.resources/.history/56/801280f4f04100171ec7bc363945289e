@@ -1,0 +1,9 @@
+package ce1002.s103403513;
+
+import javafx.scene.image.Image;
+
+//Store the image path here.
+public class ImageUtility {
+    public static Image player = new Image("/image/player.png");
+    public static Image player = new Image("/image/background.png");
+}

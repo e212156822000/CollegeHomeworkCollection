@@ -1,0 +1,23 @@
+package ce1002.s103403513;
+
+import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+
+public class MenuController {
+	@FXML
+    private Canvas background;
+	@FXML
+    private Button start_game;
+    @FXML
+    private Button exit_game;
+    @FXML
+    private void initialize(){
+        
+
+        background.
+    }
+}

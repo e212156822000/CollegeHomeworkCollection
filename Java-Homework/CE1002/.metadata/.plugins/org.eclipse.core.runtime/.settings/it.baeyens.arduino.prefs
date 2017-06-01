@@ -1,0 +1,18 @@
+714=1
+Automatically\ import\ libraries=true
+Board=Arduino/Genuino Uno
+Board\ Custom\ Option\ Selections=Processor\=
+FmStatus=1
+JANTJE.TEMPLATE_FOLDER=
+JANTJE.TEMPLATE_USE_DEFAULT=0
+Last\ used\ Examples=
+Open\ serial\ connections\ with\ the\ monitor=true
+Private\ Library\ Path=C\:/Users/user/Arduino/libraries
+Private\ hardware\ Path=C\:/Users/user/Arduino/hardware
+Serial\ Monitor\ Last\ Used\ Line\ Ending\ index=0
+Serial\ Monitor\ Last\ Used\ auto\ scroll\ setting=false
+Serial\ monitor\ last\ selected\ Port=COM6
+Serial\ monitor\ last\ selected\ rate=9600
+boards\ file=C\:\\Users\\user\\Software\\EclipsePortable\\App\\Eclipse\\arduinoPlugin\\packages\\arduino\\hardware\\avr\\1.6.18\\boards.txt
+eclipse.preferences.version=1
+upload\ Port=COM6

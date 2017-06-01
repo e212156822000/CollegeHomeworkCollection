@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="System" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="system"/>
+			<item value="getGraphicsContext2D"/>
+			<item value="gc"/>
+			<item value="ImageUtility"/>
+			<item value="write"/>
+			<item value="updateLED13"/>
+			<item value="blog"/>
+			<item value="comboBoxPorts"/>
+		</list>
+		<list key="replacehistory">
+			<item value="PlayButton"/>
+			<item value="WhiteKey"/>
+			<item value=""/>
+			<item value="operation"/>
+			<item value="index"/>
+			<item value="last_index"/>
+			<item value="M"/>
+			<item value="index != -1"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="365" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="489" key="DIALOG_HEIGHT"/>
+		<item value="1519" key="DIALOG_X_ORIGIN"/>
+		<item value="428" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

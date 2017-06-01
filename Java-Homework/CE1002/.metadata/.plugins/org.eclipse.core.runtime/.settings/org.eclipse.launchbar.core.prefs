@@ -1,0 +1,7 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:FlappyBird,org.eclipse.launchbar.core.descriptorType.default\:Game,org.eclipse.launchbar.core.descriptorType.default\:helloword,org.eclipse.launchbar.core.descriptorType.default\:Main (1),org.eclipse.launchbar.core.descriptorType.default\:Main (2),org.eclipse.launchbar.core.descriptorType.default\:Main (3),org.eclipse.launchbar.core.descriptorType.default\:Main,org.eclipse.launchbar.core.descriptorType.default\:s103403513 (1),org.eclipse.launchbar.core.descriptorType.default\:s103403513 (2),org.eclipse.launchbar.core.descriptorType.default\:s103403513 (3),org.eclipse.launchbar.core.descriptorType.default\:s103403513,org.eclipse.launchbar.core.descriptorType.default\:Piano,org.eclipse.launchbar.core.descriptorType.default\:CommPortTest
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:CommPortTest/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:CommPortTest/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Piano/activeLaunchMode=debug

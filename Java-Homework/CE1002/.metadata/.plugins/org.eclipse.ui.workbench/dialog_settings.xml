@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="90" key="DIALOG_X_ORIGIN"/>
+		<item value="152" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="736" key="dialogHeight"/>
+		<item value="1440" key="dialogWidth"/>
+		<list key="textEntries">
+			<item value="3"/>
+		</list>
+		<list key="orderedElements">
+			<item value="org.eclipse.ui.console.ConsoleView"/>
+		</list>
+		<list key="orderedProviders">
+			<item value="org.eclipse.e4.ui.parts"/>
+		</list>
+		<list key="textArray">
+			<item value="co"/>
+			<item value="conso"/>
+			<item value="console"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="it.baeyens.arduino.eclipse.NewArduinoSketchWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="it.baeyens.arduino.eclipse.newWizards"/>
+			<item value="org.eclipse.jdt.ui.java"/>
+		</list>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item value="938" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="1020" key="DIALOG_HEIGHT"/>
+		<item value="-145" key="DIALOG_X_ORIGIN"/>
+		<item value="-122" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="FileSystemImportWizard">
+	</section>
+</section>
