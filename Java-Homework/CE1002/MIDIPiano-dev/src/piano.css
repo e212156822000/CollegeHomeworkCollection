@@ -1,0 +1,7 @@
+.WhiteKey {
+	-fx-image: url('images/a.png');
+}
+
+.BlackKey{
+	-fx-image: url('images/blackKey.png');
+}
