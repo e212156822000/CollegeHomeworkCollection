@@ -14,18 +14,12 @@
 
 package edu.american;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -52,6 +46,8 @@ import javax.swing.border.EtchedBorder;
 
 
 
+
+
 import edu.american.Controller;
 
 /* BONUS WORK:
@@ -65,7 +61,8 @@ import edu.american.Controller;
 /** Constructs the GUI and handles user interaction.
  * @author Meredith Myers
  */
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -73,6 +70,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -81,7 +79,7 @@ import javafx.stage.Stage;
 
 import org.jfugue.player.Player;
 
-public class Piano extends Application {
+public class Piano<T> extends Application {
 	private int Music_Scale = 3;
     private int Num_Keys = 7;
     private String[] white_keys = {"C","D","E","F","G","A","B"};
@@ -97,29 +95,33 @@ public class Piano extends Application {
         Group group = new Group();
         StackPane stackpane = new StackPane();
         HBox box = new HBox(3);
-        box.setPadding(new Insets(50, 12, 15, 12));
+        box.setPadding(new Insets(400, 12, 12, 12));
         
         int x = 0;
     	int y = 0;
     	
-    	for(int i = 0;i < Music_Scale ; i++){
+    	for(int i = 0;i < octave.length ; i++){
     		for(int j = 0;j< Num_Keys ;j++){
     			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
     			imageView.setId(white_keys[j]+octave[i]);
+    			imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> ButtonClicked(imageView.getId()));
+    			box.getChildren().add(imageView);
     			
-    			box.getChildren().addAll(imageView);
     		}
     	}
+    	
+    	
     	stackpane.getChildren().add(box);
+    	
     	for(int i = 0;i < Music_Scale ; i++){
     		for(int j = 0;j< Num_Keys ;j++){
     			if(j!=0 && j!=3){
     				ImageView imageView2 = new ImageView(new Image("images/blackKey.png"));
     				imageView2.setId(black_keys[j]+octave[i]);
     				imageView2.setTranslateX(x-408);
-        			imageView2.setTranslateY(y-17);
+        			imageView2.setTranslateY(y+160);
+        			imageView2.setOnMouseClicked(e->ButtonClicked(imageView2.getId()));
         			stackpane.getChildren().add(imageView2);
-        			System.out.println(imageView2.getId());
         			x+=43;
     			}
     			else{
@@ -134,14 +136,15 @@ public class Piano extends Application {
     	piano.setFill(Color.GRAY);
         primaryStage.setTitle("Fx Piano");
         controller.setScene ( piano );
+         
         primaryStage.setScene( piano);
         primaryStage.show();
     }
-    private EventHandler<? super MouseEvent> ButtonClicked(String ActionId) {
-		player.play(ActionId);
-    	return null;
+    
+    private void ButtonClicked(String ActionId) {
+    	
+    	player.play(ActionId);
 	}
-
     public static void main(String[] args) {
         launch(args);
     }
