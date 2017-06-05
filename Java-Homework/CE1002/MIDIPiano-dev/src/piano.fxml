@@ -5,10 +5,10 @@
 <?import javafx.scene.control.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-   	  <Label  fx:id="status" layoutX="200.0" layoutY="100.0" minHeight="40" minWidth="300" text="status" />
-   	  <Label  fx:id="level" layoutX="200.0" layoutY="125.0" minHeight="40" minWidth="300" text="level" />
-   	  <Button fx:id="PlayButton"  layoutX="50.0"  layoutY="150" mnemonicParsing="false" text="play" />
-   	  <Button fx:id="RetryButton" layoutX="300.0" layoutY="150" mnemonicParsing="false" text="replay" />
+   <children>   	  
+   	  <Label  fx:id="level" layoutX="350.0" layoutY="100.0" minHeight="40" minWidth="300" text="level" />
+   	  <Label  fx:id="status" layoutX="360.0" layoutY="200.0" minHeight="40" minWidth="300" text="status" />
+   	  <Button fx:id="PlayButton"  layoutX="200"  layoutY="350" mnemonicParsing="false" text="play" />
+   	  <Button fx:id="RetryButton" layoutX="560" layoutY="350" mnemonicParsing="false" text="replay" />
    </children>
 </Pane>

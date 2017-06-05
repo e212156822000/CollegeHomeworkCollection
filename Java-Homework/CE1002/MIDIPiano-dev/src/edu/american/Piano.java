@@ -49,13 +49,15 @@ public class Piano extends Application {
         Group group = controller.getKeyBoard();
     	group.getChildren().add(root);
     	Scene piano = new Scene (group);
-    	
-    	piano.setFill(Color.GRAY);
+    	piano.setFill(Color.LIGHTGRAY);
         primaryStage.setTitle("Fx Piano");
         primaryStage.setScene(piano);
-        controller.setScene(piano);
         primaryStage.show();
         
+        controller.setScene(piano);
+        primaryStage.setResizable(false);
+        System.out.println(primaryStage.getHeight());
+        System.out.println(primaryStage.getWidth());
         
     }
     public static void main(String[] args) {

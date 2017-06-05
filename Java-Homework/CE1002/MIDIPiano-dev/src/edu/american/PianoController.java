@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,8 +25,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 public class PianoController {
 	@FXML
@@ -36,7 +39,8 @@ public class PianoController {
     private Label level;
     @FXML
     private Label status;
-    
+    @FXML
+    private Pane pane;
     private int Music_Scale = 3;
     private int Num_Keys = 7;
     private String[] white_keys = {"C","D","E","F","G","A","B"};
@@ -46,23 +50,43 @@ public class PianoController {
     private String[] levels = {"Easy","Normal","Hard","Nightmare"};
     private boolean Repeat_chance = true;
     private int in_level = 0;
-    DropShadow ds = new DropShadow( 20, Color.AQUA );
+    
+    DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     SongList songlist = new SongList();
+    private Stage stage;
     @FXML
     private void initialize() {
     	PlayButton.setText("開始彈奏");
     	RetryButton.setText("重新播放");
     	RetryButton.setOnAction(e -> ReplaySong(e,levels[in_level]));
+    	level.setFont(new Font(50));
+    	status.setFont(new Font(30));
     }
+    
     public void setScene(Scene scene){
     	//關卡一
     	//SetLevels(levels[in_level]);
+    	stage = (Stage) PlayButton.getScene().getWindow();
+    	System.out.println("stage: "+stage.getHeight());
+    	System.out.println("stage: "+stage.getWidth());
+    	
+    	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				SetLevels(levels[in_level]);
+				scene.setOnMouseClicked(null);
+			}
+    		
+    	});
     }
+    
     public Group getKeyBoard(){
     	Group group = new Group();
         StackPane stackpane = new StackPane();
-        HBox box = new HBox(3);
-        box.setPadding(new Insets(400, 12, 12, 12));
+        HBox PainoPanel = new HBox(3);
+        PainoPanel.setPadding(new Insets(400, 12, 12, 12));
         
         int x = 0;
     	int y = 0;
@@ -72,10 +96,10 @@ public class PianoController {
     			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
     			imageView.setId(white_keys[j]+octave[i]);
     			imageView.setOnMouseClicked(e->ButtonClicked(e));
-    			box.getChildren().add(imageView);
+    			PainoPanel.getChildren().add(imageView);
     		}
     	}
-    	stackpane.getChildren().add(box);
+    	stackpane.getChildren().add(PainoPanel);
     	
     	for(int i = 0;i < Music_Scale ; i++){
     		for(int j = 0;j< Num_Keys ;j++){
@@ -93,7 +117,7 @@ public class PianoController {
     			}
     		}
     	}
-    	group.getChildren().add(stackpane);   	
+    	group.getChildren().add(stackpane);
     	return group;
     }
     ImageView PreviousClicked = new ImageView();
@@ -107,18 +131,19 @@ public class PianoController {
 	}
     
     private void SetLevels(String Level){
+    	
     	if(Level.equals("Easy")){
     		level.setText("第一關");
+    		status.setText("播放歌曲中...");
     		String song = songlist.PickSong(Level);
     		System.out.println(song);
         	player.play(song);
     	}
     	
-    	
     }
     private void ReplaySong(Event e,String TestSong){
     	Button btn = (Button)e.getSource();
-    	
-    	btn.setDisable(true);
+    	System.out.println("clicked");
+    	//btn.setDisable(true);
     }
 }
