@@ -52,7 +52,7 @@ public class PianoController {
     private int in_level = 0;
     
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
-    SongList songlist = new SongList();
+    MusicController mc = new MusicController();
     private Stage stage;
     @FXML
     private void initialize() {
@@ -126,7 +126,11 @@ public class PianoController {
     	String ActionId = imageView.getId();
     	PreviousClicked.setEffect(null);
     	imageView.setEffect(ds);
-    	player.play(ActionId);
+    	/*
+    	MusicController mc = new MusicController();
+    	mc.PutSongInPlayer(ActionId);
+    	mc.start();
+    	*/
     	PreviousClicked = imageView;
 	}
     
@@ -135,15 +139,13 @@ public class PianoController {
     	if(Level.equals("Easy")){
     		level.setText("第一關");
     		status.setText("播放歌曲中...");
-    		String song = songlist.PickSong(Level);
-    		System.out.println(song);
-        	player.play(song);
+    		mc.PickSong(Level);
+    		mc.start();
     	}
     	
     }
-    private void ReplaySong(Event e,String TestSong){
+    private void ReplaySong(Event e,String WhichSong){
     	Button btn = (Button)e.getSource();
-    	System.out.println("clicked");
-    	//btn.setDisable(true);
+    	mc.PutSongInPlayer(WhichSong);
     }
 }

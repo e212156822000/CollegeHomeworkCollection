@@ -2,7 +2,9 @@ package edu.american;
 
 import java.util.Random;
 
-public class SongList{
+import org.jfugue.player.Player;
+
+public class MusicController extends Thread{
 	//簡單的歌曲
 	public static String Little_Star = "C C G G A A Gq. F F E E D D C";//小星星
 	public static String Little_Donkey = "T180 D5 D5 D5 E5 G5 G5 G5q. G5 A5 A5 A5 C6 G5h";//小毛驢
@@ -18,20 +20,27 @@ public class SongList{
     private String[] Normal = {God_Rest_You,To_Alice};
     private String[] Hard = {Servent_Of_Evil,Sakura};
 	private int which_song = 0;
-	public String PickSong(String WhichLevel){
+	private String song_in_player = "";
+	private Player player = new Player();
+	
+	public void PickSong(String WhichLevel){
 		Random ran = new Random();
-		String song_picked = "";
     	if(WhichLevel.equals("Easy")){
     		which_song = ran.nextInt(Easy.length);
-    		song_picked = Easy[which_song];
+    		song_in_player = Easy[which_song];
     	}else if(WhichLevel.equals("Normal")){
     		which_song = ran.nextInt(Normal.length);
-    		song_picked = Normal[which_song];
+    		song_in_player = Normal[which_song];
     	}else if(WhichLevel.equals("Hard")){
     		which_song = ran.nextInt(Hard.length);
-    		song_picked = Hard[which_song];
+    		song_in_player = Hard[which_song];
     	}
-    	return song_picked;
+	}
+	public void PutSongInPlayer(String song){
+		song_in_player = song;
+	}
+	public void run(){
+		player.play(song_in_player);
 	}
 	
 }
