@@ -53,11 +53,8 @@ public class Piano extends Application {
         primaryStage.setTitle("Fx Piano");
         primaryStage.setScene(piano);
         primaryStage.show();
-        
         controller.setScene(piano);
         primaryStage.setResizable(false);
-        System.out.println(primaryStage.getHeight());
-        System.out.println(primaryStage.getWidth());
         
     }
     public static void main(String[] args) {

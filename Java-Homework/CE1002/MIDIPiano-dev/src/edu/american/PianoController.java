@@ -50,7 +50,7 @@ public class PianoController {
     private String[] levels = {"Easy","Normal","Hard","Nightmare"};
     private boolean Repeat_chance = true;
     private int in_level = 0;
-    
+    private int thread_id = 1;
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     MusicController mc = new MusicController();
     private Stage stage;
@@ -67,8 +67,6 @@ public class PianoController {
     	//Ãö¥d¤@
     	//SetLevels(levels[in_level]);
     	stage = (Stage) PlayButton.getScene().getWindow();
-    	System.out.println("stage: "+stage.getHeight());
-    	System.out.println("stage: "+stage.getWidth());
     	
     	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -120,20 +118,34 @@ public class PianoController {
     	group.getChildren().add(stackpane);
     	return group;
     }
+    
     ImageView PreviousClicked = new ImageView();
     private void ButtonClicked(MouseEvent e) {
+    	//get imageView's id
     	ImageView imageView = (ImageView)e.getSource();
     	String ActionId = imageView.getId();
     	PreviousClicked.setEffect(null);
     	imageView.setEffect(ds);
-    	/*
-    	MusicController mc = new MusicController();
     	mc.PutSongInPlayer(ActionId);
-    	mc.start();
-    	*/
     	PreviousClicked = imageView;
 	}
     
+    /*
+     * 
+     * 
+    	MusicController PreviousClickedMc = new MusicController();
+    	try{
+    		PreviousClickedMc.join();
+        }catch( Exception exp){
+        	System.out.println("error");
+        }
+        
+    	MusicController mc_key = new MusicController();
+    	Thread.currentThread().setName(ActionId+thread_id);
+    	PreviousClickedMc = mc;
+    	thread_id ++;
+    	
+     */
     private void SetLevels(String Level){
     	
     	if(Level.equals("Easy")){

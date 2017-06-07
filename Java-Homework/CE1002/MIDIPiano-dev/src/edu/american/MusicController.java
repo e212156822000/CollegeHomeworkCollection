@@ -39,8 +39,17 @@ public class MusicController extends Thread{
 	public void PutSongInPlayer(String song){
 		song_in_player = song;
 	}
+	public void PutKeyInPlayer(String key){
+		song_in_player = "T200 "+key;
+	}
 	public void run(){
-		player.play(song_in_player);
+		while(!Thread.interrupted()){
+			player.play(song_in_player);
+			StopMusic();
+		}
+	}
+	private void StopMusic(){
+		song_in_player = "";
 	}
 	
 }
