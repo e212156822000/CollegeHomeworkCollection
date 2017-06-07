@@ -2,7 +2,10 @@ package edu.american;
 import java.io.File;
 import java.util.Random;
 
+import javax.sound.midi.MidiUnavailableException;
+
 import org.jfugue.player.Player;
+import org.jfugue.realtime.RealtimePlayer;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -50,6 +53,7 @@ public class PianoController {
     private String[] levels = {"Easy","Normal","Hard","Nightmare"};
     private boolean Repeat_chance = true;
     private int in_level = 0;
+    private int threadId = 0;
     
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     MusicController mc = new MusicController();
@@ -63,9 +67,10 @@ public class PianoController {
     	status.setFont(new Font(30));
     }
     
-    public void setScene(Scene scene){
+    public void setScene(Scene scene) throws MidiUnavailableException{
     	//關卡一
     	//SetLevels(levels[in_level]);
+    	RealtimePlayer rplayer = new RealtimePlayer();
     	stage = (Stage) PlayButton.getScene().getWindow();
     	System.out.println("stage: "+stage.getHeight());
     	System.out.println("stage: "+stage.getWidth());
@@ -126,12 +131,10 @@ public class PianoController {
     	String ActionId = imageView.getId();
     	PreviousClicked.setEffect(null);
     	imageView.setEffect(ds);
-    	/*
-    	MusicController mc = new MusicController();
     	mc.PutSongInPlayer(ActionId);
-    	mc.start();
-    	*/
+    	(new Thread(mc)).start();
     	PreviousClicked = imageView;
+    	threadId++;
 	}
     
     private void SetLevels(String Level){
@@ -140,7 +143,7 @@ public class PianoController {
     		level.setText("第一關");
     		status.setText("播放歌曲中...");
     		mc.PickSong(Level);
-    		mc.start();
+    		(new Thread(mc)).start();
     	}
     	
     }

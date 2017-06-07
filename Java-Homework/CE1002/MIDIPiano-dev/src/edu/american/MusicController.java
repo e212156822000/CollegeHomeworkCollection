@@ -4,7 +4,7 @@ import java.util.Random;
 
 import org.jfugue.player.Player;
 
-public class MusicController extends Thread{
+public class MusicController implements Runnable{
 	//簡單的歌曲
 	public static String Little_Star = "C C G G A A Gq. F F E E D D C";//小星星
 	public static String Little_Donkey = "T180 D5 D5 D5 E5 G5 G5 G5q. G5 A5 A5 A5 C6 G5h";//小毛驢
@@ -21,6 +21,7 @@ public class MusicController extends Thread{
     private String[] Hard = {Servent_Of_Evil,Sakura};
 	private int which_song = 0;
 	private String song_in_player = "";
+	private boolean playing_flag  = false;
 	private Player player = new Player();
 	
 	public void PickSong(String WhichLevel){
@@ -42,5 +43,4 @@ public class MusicController extends Thread{
 	public void run(){
 		player.play(song_in_player);
 	}
-	
 }
