@@ -4,8 +4,6 @@ import java.util.Random;
 
 import javax.sound.midi.MidiUnavailableException;
 
-import org.jfugue.player.Player;
-import org.jfugue.realtime.RealtimePlayer;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -49,12 +47,8 @@ public class PianoController {
     private String[] white_keys = {"C","D","E","F","G","A","B"};
     private String[] black_keys = {"","C#","D#","","F#","G#","A#"};
     private String[] octave = {"4","5","6"};
-    private Player player = new Player();
     private String[] levels = {"Easy","Normal","Hard","Nightmare"};
-    private boolean Repeat_chance = true;
     private int in_level = 0;
-    private int threadId = 0;
-   
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     MusicController mc = new MusicController();
     private Stage stage;
@@ -62,19 +56,14 @@ public class PianoController {
     private void initialize() {
     	PlayButton.setText("開始彈奏");
     	RetryButton.setText("重新播放");
-    	RetryButton.setOnAction(e -> ReplaySong(e,levels[in_level]));
+    	RetryButton.setOnAction(e -> ReplaySong(e));
     	level.setFont(new Font(50));
     	status.setFont(new Font(30));
     }
-    
     public void setScene(Scene scene) throws MidiUnavailableException{
     	//關卡一
-    	//SetLevels(levels[in_level]);
-    	RealtimePlayer rplayer = new RealtimePlayer();
     	stage = (Stage) PlayButton.getScene().getWindow();
-    	
     	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
@@ -91,36 +80,36 @@ public class PianoController {
         HBox PainoPanel = new HBox(3);
         PainoPanel.setPadding(new Insets(400, 12, 12, 12));
         
-        int x = 0;
-    	int y = 0;
-    	
-    	for(int i = 0;i < Music_Scale ; i++){
-    		for(int j = 0;j< Num_Keys ;j++){
-    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
-    			imageView.setId(white_keys[j]+octave[i]);
-    			imageView.setOnMouseClicked(e->ButtonClicked(e));
-    			PainoPanel.getChildren().add(imageView);
-    		}
-    	}
-    	stackpane.getChildren().add(PainoPanel);
-    	
-    	for(int i = 0;i < Music_Scale ; i++){
-    		for(int j = 0;j< Num_Keys ;j++){
-    			if(j!=0 && j!=3){
-    				ImageView imageView2 = new ImageView(new Image("images/blackKey.png"));
-    				imageView2.setId(black_keys[j]+octave[i]);
-    				imageView2.setTranslateX(x-408);
-        			imageView2.setTranslateY(y+160);
-        			imageView2.setOnMouseClicked(e->ButtonClicked(e));
-        			stackpane.getChildren().add(imageView2);
-        			x+=43;
-    			}
-    			else{
-    				x+=30;
-    			}
-    		}
-    	}
-    	group.getChildren().add(stackpane);
+        int x = 0,y = 0;
+      
+	    	for(int i = 0;i < Music_Scale ; i++){
+	    		for(int j = 0;j< Num_Keys ;j++){
+	    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
+	    			imageView.setId(white_keys[j]+octave[i]);
+	    			imageView.setOnMouseClicked(e->ButtonClicked(e));
+	    			PainoPanel.getChildren().add(imageView);
+	    		}
+	    	}
+	    	stackpane.getChildren().add(PainoPanel);
+	    	
+	    	for(int i = 0;i < Music_Scale ; i++){
+	    		for(int j = 0;j< Num_Keys ;j++){
+	    			if(j!=0 && j!=3){
+	    				ImageView imageView2 = new ImageView(new Image("images/blackKey.png"));
+	    				imageView2.setId(black_keys[j]+octave[i]);
+	    				imageView2.setTranslateX(x-408);
+	        			imageView2.setTranslateY(y+160);
+	        			imageView2.setOnMouseClicked(e->ButtonClicked(e));
+	        			stackpane.getChildren().add(imageView2);
+	        			x+=43;
+	    			}
+	    			else{
+	    				x+=30;
+	    			}
+	    		}
+	    	}
+	    	group.getChildren().add(stackpane);
+	   
     	return group;
     }
     
@@ -129,42 +118,24 @@ public class PianoController {
     	//get imageView's id
     	ImageView imageView = (ImageView)e.getSource();
     	String ActionId = imageView.getId();
+    	mc.PutKeyInPlayer(ActionId);
+    	mc.PlayMusic();
     	PreviousClicked.setEffect(null);
     	imageView.setEffect(ds);
-    	mc.PutSongInPlayer(ActionId);
-    	(new Thread(mc)).start();
     	PreviousClicked = imageView;
-    	threadId++;
 	}
-    
-    /*
-     * 
-     * 
-    	MusicController PreviousClickedMc = new MusicController();
-    	try{
-    		PreviousClickedMc.join();
-        }catch( Exception exp){
-        	System.out.println("error");
-        }
-        
-    	MusicController mc_key = new MusicController();
-    	Thread.currentThread().setName(ActionId+thread_id);
-    	PreviousClickedMc = mc;
-    	thread_id ++;
-    	
-     */
     private void SetLevels(String Level){
-    	
     	if(Level.equals("Easy")){
     		level.setText("第一關");
     		status.setText("播放歌曲中...");
     		mc.PickSong(Level);
-    		(new Thread(mc)).start();
+    		mc.PlayMusic();
     	}
-    	
     }
-    private void ReplaySong(Event e,String WhichSong){
+    private void ReplaySong(Event e){
     	Button btn = (Button)e.getSource();
-    	mc.PutSongInPlayer(WhichSong);
+    	mc.PutSongInPlayer(mc.getTestSong());
+    	mc.PlayMusic();
+    	btn.setDisable(true);
     }
 }

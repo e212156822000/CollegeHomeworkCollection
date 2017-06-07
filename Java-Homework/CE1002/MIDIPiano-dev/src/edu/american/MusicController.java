@@ -2,7 +2,11 @@ package edu.american;
 
 import java.util.Random;
 
+import javax.sound.midi.MidiUnavailableException;
+
 import org.jfugue.player.Player;
+import org.jfugue.realtime.RealtimePlayer;
+import org.jfugue.theory.Note;
 
 public class MusicController implements Runnable{
 	//Â²³æªººq¦±
@@ -21,9 +25,10 @@ public class MusicController implements Runnable{
     private String[] Hard = {Servent_Of_Evil,Sakura};
 	private int which_song = 0;
 	private String song_in_player = "";
-	private boolean playing_flag  = false;
+	private boolean alreadyExecuted  = false;
 	private Player player = new Player();
-	
+	private String testsong = "";
+	RealtimePlayer rplayer;
 	public void PickSong(String WhichLevel){
 		Random ran = new Random();
     	if(WhichLevel.equals("Easy")){
@@ -36,6 +41,10 @@ public class MusicController implements Runnable{
     		which_song = ran.nextInt(Hard.length);
     		song_in_player = Hard[which_song];
     	}
+    	testsong = song_in_player;
+	}
+	public String getTestSong(){
+		return testsong;
 	}
 	public void PutSongInPlayer(String song){
 		song_in_player = song;
@@ -46,10 +55,19 @@ public class MusicController implements Runnable{
 	public void run(){
 		while(!Thread.interrupted()){
 			player.play(song_in_player);
-			StopMusic();
+			song_in_player="";
 		}
 	}
-	private void StopMusic(){
-		song_in_player = "";
+	public void PlayMusic(){
+		if(!alreadyExecuted) {
+			try {
+				rplayer = new RealtimePlayer();
+			} catch (MidiUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			alreadyExecuted = true;
+		}
+		rplayer.play(song_in_player);
 	}
 }
