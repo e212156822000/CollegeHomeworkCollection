@@ -51,7 +51,7 @@ public class PianoController {
     private String[] white_keys = {"C","D","E","F","G","A","B"};
     private String[] black_keys = {"","C#","D#","","F#","G#","A#"};
     private String[] octave = {"4","5","6"};
-    private String[] levels = {"Easy","Normal","Hard","Nightmare"};
+    private String[] levels = {"Easy","Normal","Hard","Success"};
     private int in_level = 0;
     private String AnswerMusic = "";
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
@@ -66,19 +66,16 @@ public class PianoController {
     	status.setFont(new Font(30));
     }
     public void setScene(Scene scene) throws MidiUnavailableException{
-    	//關卡一
-    	
+    	//初始化關卡一
     	stage = (Stage) PlayButton.getScene().getWindow();
     	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				SetLevels(levels[1]);
-				//PlayMusicAndMarkTheKey("C4 C6 D5 C4 C6 D5");
+				SetLevels(levels[in_level]);
 				scene.setOnMouseClicked(null);
 			}
     	});
-    	//關卡二
     }
     
     public Group getKeyBoard(){
@@ -134,6 +131,8 @@ public class PianoController {
     	
     	if(mc.CheckAnswer(AnswerMusic)){
     		System.out.println("win!");
+    		mc.pass = false;
+    		SetLevels(levels[++in_level]);
     	}
 	}
 
@@ -162,12 +161,14 @@ public class PianoController {
 	private void SetLevels(String Level){
     	if(Level.equals("Easy")){
     		level.setText("第一關");
-    		status.setText("播放歌曲中...");
-    		
     	}else if(Level.equals("Normal")){
     		level.setText("第二關");
-    		status.setText("播放歌曲中...");
+    	}else if(Level.equals("Hard")){
+    		level.setText("第三關");
+    	}else{
+    		level.setText("恭喜過關");
     	}
+    	status.setText("播放歌曲中...");
     	mc.PickSong(Level);
 		mc.PlayMusic();
 		mc.setTestSong(mc.SongFilter(mc.getTestSong()));

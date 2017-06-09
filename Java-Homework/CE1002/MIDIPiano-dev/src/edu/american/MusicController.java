@@ -19,15 +19,15 @@ public class MusicController implements Runnable{
 	public static String God_Rest_You = "A5 A#5 G5 A5 A#5 C6 D6 A5 G5 F5 E5 D5h";//天賜奇蹟  前半段:D D A A G F E D C D E F G A
 	public static String To_Alice = "T60 E6s D#6s E6s D#6s E6s B5s D6s C6s A5i.";//給愛麗絲
 	//困難
-	public static String Servent_Of_Evil = "T240 G G G Gh F E D Eh C C C D Eh. | F F F Fh E D C Eh Dq D D C E Dh";//惡之召使
-    public static String Sakura = "T240 D D D C D F F G D D D C D C A4 Cq D D D C D F F G Ah Gh Fh Dh";//千本櫻
+	public static String Servent_Of_Evil = "T240 G6 G6 G6 G6h F6 E6 D6 E6h C6 C6 C6 D6 E6h. | F6 F6 F6 F6h E6 D6 C6 E6h D6q D6 D6 C6 E6 D6h";//惡之召使
+    public static String Sakura = "T240 D5 D5 D5 C5 D5 F5 F5 G5 D5 D5 D5 C5 D5 C5 A4 C5q D5 D5 D5 C5 D5 F5 F5 G5 A5h G5h F5h D5h";//千本櫻
 	
     
 	private String[] Easy = {Little_Star,Little_Donkey,Little_Bee};
     private String[] Normal = {God_Rest_You,To_Alice};
     private String[] Hard = {Servent_Of_Evil,Sakura};
     //private boolean[] pass = {false,false,false};
-	private boolean pass = false;
+	public boolean pass = false;
     private int which_song = 0;
 	private String song_in_player = "";
 	private boolean alreadyExecuted  = false;
