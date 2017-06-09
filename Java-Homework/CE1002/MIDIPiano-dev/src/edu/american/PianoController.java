@@ -5,6 +5,10 @@ import java.util.Random;
 import javax.sound.midi.MidiUnavailableException;
 
 
+
+
+
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -49,6 +53,7 @@ public class PianoController {
     private String[] octave = {"4","5","6"};
     private String[] levels = {"Easy","Normal","Hard","Nightmare"};
     private int in_level = 0;
+    private String AnswerMusic = "";
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     MusicController mc = new MusicController();
     private Stage stage;
@@ -62,16 +67,18 @@ public class PianoController {
     }
     public void setScene(Scene scene) throws MidiUnavailableException{
     	//關卡一
+    	
     	stage = (Stage) PlayButton.getScene().getWindow();
     	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				SetLevels(levels[in_level]);
+				SetLevels(levels[1]);
+				//PlayMusicAndMarkTheKey("C4 C6 D5 C4 C6 D5");
 				scene.setOnMouseClicked(null);
 			}
-    		
     	});
+    	//關卡二
     }
     
     public Group getKeyBoard(){
@@ -112,7 +119,7 @@ public class PianoController {
 	   
     	return group;
     }
-    
+
     ImageView PreviousClicked = new ImageView();
     private void ButtonClicked(MouseEvent e) {
     	//get imageView's id
@@ -123,14 +130,48 @@ public class PianoController {
     	PreviousClicked.setEffect(null);
     	imageView.setEffect(ds);
     	PreviousClicked = imageView;
+    	AnswerMusic += ActionId + " ";
+    	
+    	if(mc.CheckAnswer(AnswerMusic)){
+    		System.out.println("win!");
+    	}
 	}
-    private void SetLevels(String Level){
+
+/* 
+    private void PlayMusicAndMarkTheKey(String ActionId) {
+    	//get imageView's id
+    	ImageView imageView = null;
+    	String[] splited = ActionId.split("\\s+");
+    	for(int i = 0;i <splited.length;i++){
+        	imageView = (ImageView) PlayButton.getScene().lookup("#"+splited[i]);
+        	mc.PutKeyInPlayer(splited[i]);
+        	mc.PlayMusic();
+        	PreviousClicked.setEffect(null);
+        	imageView.setEffect(ds);
+        	imageView.setSmooth(true);
+        	PreviousClicked = imageView;
+        	try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+	}
+*/    
+	private void SetLevels(String Level){
     	if(Level.equals("Easy")){
     		level.setText("第一關");
     		status.setText("播放歌曲中...");
-    		mc.PickSong(Level);
-    		mc.PlayMusic();
+    		
+    	}else if(Level.equals("Normal")){
+    		level.setText("第二關");
+    		status.setText("播放歌曲中...");
     	}
+    	mc.PickSong(Level);
+		mc.PlayMusic();
+		mc.setTestSong(mc.SongFilter(mc.getTestSong()));
+		System.out.println(mc.getTestSong());
     }
     private void ReplaySong(Event e){
     	Button btn = (Button)e.getSource();

@@ -1,6 +1,8 @@
 package edu.american;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.sound.midi.MidiUnavailableException;
 
@@ -10,9 +12,9 @@ import org.jfugue.theory.Note;
 
 public class MusicController implements Runnable{
 	//簡單的歌曲
-	public static String Little_Star = "C C G G A A Gq. F F E E D D C";//小星星
+	public static String Little_Star = "C5 C5 G5 G5 A5 A5 G5q. F5 F5 E5 E5 D5 D5 C5";//小星星
 	public static String Little_Donkey = "T180 D5 D5 D5 E5 G5 G5 G5q. G5 A5 A5 A5 C6 G5h";//小毛驢
-	public static String Little_Bee = "G E Eh F D Dh C D E F G G Gh";//小蜜蜂
+	public static String Little_Bee = "G5 E5 E5h F5 D5 D5h C5 D5 E5 F5 G5 G5 G5h";//小蜜蜂
 	//普通
 	public static String God_Rest_You = "A5 A#5 G5 A5 A#5 C6 D6 A5 G5 F5 E5 D5h";//天賜奇蹟  前半段:D D A A G F E D C D E F G A
 	public static String To_Alice = "T60 E6s D#6s E6s D#6s E6s B5s D6s C6s A5i.";//給愛麗絲
@@ -20,14 +22,18 @@ public class MusicController implements Runnable{
 	public static String Servent_Of_Evil = "T240 G G G Gh F E D Eh C C C D Eh. | F F F Fh E D C Eh Dq D D C E Dh";//惡之召使
     public static String Sakura = "T240 D D D C D F F G D D D C D C A4 Cq D D D C D F F G Ah Gh Fh Dh";//千本櫻
 	
+    
 	private String[] Easy = {Little_Star,Little_Donkey,Little_Bee};
     private String[] Normal = {God_Rest_You,To_Alice};
     private String[] Hard = {Servent_Of_Evil,Sakura};
-	private int which_song = 0;
+    //private boolean[] pass = {false,false,false};
+	private boolean pass = false;
+    private int which_song = 0;
 	private String song_in_player = "";
 	private boolean alreadyExecuted  = false;
 	private Player player = new Player();
 	private String testsong = "";
+	private final String REGEX = "[A-G](#)*[0-9]";
 	RealtimePlayer rplayer;
 	public void PickSong(String WhichLevel){
 		Random ran = new Random();
@@ -46,16 +52,37 @@ public class MusicController implements Runnable{
 	public String getTestSong(){
 		return testsong;
 	}
+	public void setTestSong(String str){
+		testsong = str;
+	}
 	public void PutSongInPlayer(String song){
 		song_in_player = song;
 	}
 	public void PutKeyInPlayer(String key){
 		song_in_player = "T200 "+key;
 	}
+	public boolean CheckAnswer(String Answer){
+		if(Answer.length()>testsong.length()){
+			Answer = Answer.trim();//去掉尾巴的空格鍵
+			Answer = Answer.substring(Answer.length() - testsong.length());//擷取最後彈的部分
+		}
+		if(Answer.equals(testsong)) pass = true;
+		return pass;
+	}
+	
+	public String SongFilter(String original_song){
+		  Pattern p = Pattern.compile(REGEX);
+	      Matcher m = p.matcher(original_song);   // get a matcher object
+	      String str = "";
+	      while(m.find()) {
+	         str += m.group() + " ";
+	      }
+	      return str.trim();
+	}
+	
 	public void run(){
 		while(!Thread.interrupted()){
-			player.play(song_in_player);
-			song_in_player="";
+			System.out.print("x");
 		}
 	}
 	public void PlayMusic(){
@@ -69,5 +96,8 @@ public class MusicController implements Runnable{
 			alreadyExecuted = true;
 		}
 		rplayer.play(song_in_player);
+	}
+	public void Signal(String song_in_player){
+		
 	}
 }
