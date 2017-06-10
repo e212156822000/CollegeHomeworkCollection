@@ -3,12 +3,6 @@ import java.io.File;
 import java.util.Random;
 
 import javax.sound.midi.MidiUnavailableException;
-
-
-
-
-
-
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -171,13 +165,13 @@ public class PianoController {
     	status.setText("¼½©ñºq¦±¤¤...");
     	mc.PickSong(Level);
 		mc.PlayMusic();
-		mc.setTestSong(mc.SongFilter(mc.getTestSong()));
+		mc.setTestSong(mc.SongFilter(mc.getTestSongMelody()));
 		System.out.println(mc.getTestSong());
     }
     private void ReplaySong(Event e){
     	Button btn = (Button)e.getSource();
-    	mc.PutSongInPlayer(mc.getTestSong());
+    	mc.PutSongInPlayer(mc.getTestSongMelody());
     	mc.PlayMusic();
-    	btn.setDisable(true);
+    	//btn.setDisable(true);
     }
 }

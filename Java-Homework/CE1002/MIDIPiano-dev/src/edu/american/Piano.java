@@ -48,7 +48,7 @@ public class Piano extends Application {
         //get piano keyboard
         Group group = controller.getKeyBoard();
     	group.getChildren().add(root);
-    	Scene piano = new Scene (group);
+    	Scene piano = new Scene(group);
     	piano.setFill(Color.LIGHTGRAY);
         primaryStage.setTitle("Fx Piano");
         primaryStage.setScene(piano);
