@@ -43,8 +43,8 @@ public class PianoController {
     private FadeTransition fadeIn = new FadeTransition(Duration.millis(8000));
     @FXML
     private void initialize() {
+    	//隱藏 Retrybutton 避免誤導玩家。
     	RetryButton.setText("重新播放");
-    	
     	RetryButton.setOnAction(e -> ReplaySong(e));
     	RetryButton.setVisible(false);
     	level.setFont(new Font(50));
@@ -109,10 +109,7 @@ public class PianoController {
 	    			}
 	    		}
 	    	}
-	    	
 	    	group.getChildren().add(stackpane);
-	    	
-	    	
     	return group;
     }
 
@@ -175,31 +172,7 @@ public class PianoController {
 		System.out.println(mc.getTestSong());
     }
     private void ReplaySong(Event e){
-    	Button btn = (Button)e.getSource();
     	mc.PutSongInPlayer(mc.getTestSongMelody());
     	mc.PlayMusic();
     }
-
-/* 
-    private void PlayMusicAndMarkTheKey(String ActionId) {
-    	//get imageView's id
-    	ImageView imageView = null;
-    	String[] splited = ActionId.split("\\s+");
-    	for(int i = 0;i <splited.length;i++){
-        	imageView = (ImageView) PlayButton.getScene().lookup("#"+splited[i]);
-        	mc.PutKeyInPlayer(splited[i]);
-        	mc.PlayMusic();
-        	PreviousClicked.setEffect(null);
-        	imageView.setEffect(ds);
-        	imageView.setSmooth(true);
-        	PreviousClicked = imageView;
-        	try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-	}
-*/
 }

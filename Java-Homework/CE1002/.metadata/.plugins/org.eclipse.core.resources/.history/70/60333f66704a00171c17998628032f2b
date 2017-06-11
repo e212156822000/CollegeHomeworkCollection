@@ -1,0 +1,158 @@
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
+public class Mypiano extends Application 
+{
+@Override
+public void start(Stage primaryStage)
+{
+
+Group root = new Group();   
+Rectangle r = new Rectangle(300,60,60,200);
+r.setFill(Color.WHITE);
+r.setStroke(Color.BLACK);
+Rectangle ra = new Rectangle(340,60,50,130);
+ra.setFill(Color.BLACK); 
+Rectangle r1 = new Rectangle(361,60,60,200);
+r1.setFill(Color.WHITE);
+r1.setStroke(Color.BLACK);
+Rectangle r1a = new Rectangle(400,60,50,130);
+r1a.setFill(Color.BLACK);
+Rectangle r2 = new Rectangle(421,60,60,200);
+r2.setFill(Color.WHITE);
+r2.setStroke(Color.BLACK);
+Rectangle r2a = new Rectangle(461,60,50,130);
+r2a.setFill(Color.BLACK);
+Rectangle r3 = new Rectangle(483,60,60,200);
+r3.setFill(Color.WHITE);
+r3.setStroke(Color.BLACK);
+Rectangle r3a = new Rectangle(524,60,20,130);
+r3a.setFill(Color.BLACK);
+Rectangle r4 = new Rectangle(545,60,60,200);
+r4.setFill(Color.WHITE);
+r4.setStroke(Color.BLACK);
+Rectangle r4a = new Rectangle(584,60,20,130);
+r4a.setFill(Color.BLACK); 
+
+final AudioClip note1 = new AudioClip(getClass().getResource("Note1.wav").toString());
+final AudioClip note2 = new AudioClip(getClass().getResource("Note2.wav").toString());
+final AudioClip note3 = new AudioClip(getClass().getResource("Note3.wav").toString());
+final AudioClip note4 = new AudioClip(getClass().getResource("Note4.wav").toString());
+final AudioClip note5 = new AudioClip(getClass().getResource("Note5.wav").toString());
+final AudioClip note6 = new AudioClip(getClass().getResource("Note6.wav").toString());
+final AudioClip note7 = new AudioClip(getClass().getResource("Note7.wav").toString());
+
+final AudioClip note8 =
+new AudioClip(getClass().getResource("Note8.wav").toString());
+r.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note1.play();
+
+}
+});
+r1.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note2.play();
+
+}
+});
+r2.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note3.play();
+
+}
+});
+r3.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note4.play();
+
+}
+});
+r4.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note5.play();
+
+}
+});
+ra.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note6.play();
+
+}
+});
+
+r1a.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note7.play();
+
+}
+});
+r2a.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note1.play();
+
+}
+});
+r3a.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note2.play();
+
+}
+});
+r4a.setOnMouseClicked(new EventHandler<MouseEvent>()
+{
+@Override
+public void handle(MouseEvent me) {
+
+note8.play();
+
+}
+});
+
+
+root.getChildren().addAll(r,ra,r1,r1a,r2,r2a,r3,r3a,r4,r4a);
+Scene scene = new Scene(root, 600, 300);
+primaryStage.setTitle("PIANO");
+primaryStage.setScene(scene);
+primaryStage.show();
+}
+
+public static void main(String[] args) {
+launch(args);
+}
+
+}

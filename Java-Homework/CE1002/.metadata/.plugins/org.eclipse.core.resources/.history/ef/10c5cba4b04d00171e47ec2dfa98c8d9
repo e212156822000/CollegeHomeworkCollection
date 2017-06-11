@@ -1,0 +1,23 @@
+
+import org.jfugue.player.Player;
+
+public class Music {
+	  
+	  public static void main(String[] args) {
+		  Player player = new Player();
+		
+		String[] Keys= {"C","D","E","F","G","A","B"};
+		String Song = "222124456542";
+	    String ComplexSong = "";
+	   /*
+	    for(int i = 0;i < Song.length() ;i++){
+	    	ComplexSong += Keys[Character.getNumericValue(Song.charAt(i))-1] + " " ;
+	    }
+	    */
+	    ComplexSong = "T240 G6q G6i G6q. G6q F6q E6i D6. E6q C6q C6i C6 C6s D6q E6w | F6q F6i F6. F6q E6q D6i C6. E6q D6q D6i D6 C6s E6q D6w";
+	    System.out.println(ComplexSong);
+	    //ComplexSong = ;
+	    player.play(ComplexSong);
+	    
+	  }
+}

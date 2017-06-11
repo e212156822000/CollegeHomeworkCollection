@@ -1,0 +1,22 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Regex{
+
+   private static final String REGEX = "\\b[A-Z][0-9](#)*";
+   private static final String INPUT = "C5 C6# C7 ";
+
+   public static void main( String args[] ) {
+      Pattern p = Pattern.compile(REGEX);
+      Matcher m = p.matcher(INPUT);   // get a matcher object
+      int count = 0;
+
+      while(m.find()) {
+         count++;
+         System.out.println("Match number "+count);
+         System.out.println("Match pattern "+m.group());
+         System.out.println("start(): "+m.start());
+         System.out.println("end(): "+m.end());
+      }
+   }
+}

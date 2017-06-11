@@ -1,0 +1,64 @@
+public class AnimateText extends Application {  
+    @Override
+    public void start(Stage primaryStage) {
+        //target node
+        Text text = new Text("Title");
+
+        //fade-in animation
+        Button fadeIn = new Button("Fade In");
+        fadeIn.setOnAction(e -> {
+            @SuppressWarnings("deprecation")
+            FadeTransition fade1 = FadeTransitionBuilder
+                    .create()
+                    .node(text)
+                    .duration(Duration.millis(900))
+                    .fromValue(0)
+                    .toValue(1)
+                    .build();
+            fade1.play();
+        });
+
+        //fade-out animation
+        Button fadeOut = new Button("Fade Out");
+        fadeOut.setOnAction(e -> {
+            @SuppressWarnings("deprecation")
+            FadeTransition fade2 = FadeTransitionBuilder
+                    .create()
+                    .node(text)
+                    .duration(Duration.millis(900))
+                    .fromValue(1)
+                    .toValue(0)
+                    .build();
+            fade2.play();
+        });
+
+        //slide-down animation
+        Button slideDown = new Button("Slide-Down");
+        slideDown.setOnAction((ActionEvent event) -> {
+            @SuppressWarnings("deprecation")
+            TranslateTransition slide = TranslateTransitionBuilder.create()
+                    .node(text).duration(Duration.millis(900))
+                    .fromY(-400)
+                    .toY(0)
+                    .build();
+            slide.play();
+        });
+
+
+        BorderPane root = new BorderPane();
+        root.setCenter(text);
+        root.setRight(fadeOut);
+        root.setLeft(fadeIn);
+        root.setBottom(slideDown);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        primaryStage.setTitle("Animation Demo");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }   
+}
