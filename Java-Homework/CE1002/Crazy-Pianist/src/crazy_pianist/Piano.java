@@ -1,4 +1,4 @@
-package edu.american;
+package crazy_pianist;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,6 @@ public class Piano extends Application {
         Group group = controller.getKeyBoard();
     	group.getChildren().add(root);
     	Scene piano = new Scene(group);
-    	piano.getStylesheets().add("piano.css");
     	primaryStage.setTitle("Crazy Pianist");
     	primaryStage.setHeight(600);
     	primaryStage.setWidth(850);

@@ -1,13 +1,13 @@
+package crazy_pianist;
+
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.sound.midi.MidiUnavailableException;
-
-import org.jfugue.player.Player;
 import org.jfugue.realtime.RealtimePlayer;
 
-public class MusicController implements Runnable{
+public class MusicController{
 	//簡單的歌曲
 	public static String Little_Star = "C5 C5 G5 G5 A5 A5 G5q. F5 F5 E5 E5 D5 D5 C5";//小星星
 	public static String Little_Donkey = "T180 C5 C5 C5 E5 G5 G5 G5h A5 A5 A5 C6 G5h";//小毛驢
@@ -26,12 +26,10 @@ public class MusicController implements Runnable{
     private String[] NormalName = {"天賜奇蹟","給愛麗絲"};
     private String[] Hard = {Servent_Of_Evil,Sakura};
     private String[] HardName = {"惡之召使","千本櫻"};
-    //private boolean[] pass = {false,false,false};
 	public boolean pass = false;
     private int which_song = 0;
 	private String song_in_player = "";
 	private boolean alreadyExecuted  = false;
-	private Player player = new Player();
 	private String testsong = "",TestSongMelody = "",TestSongName = "";
 	private final String REGEX = "[A-G](#)*[0-9]";
 	RealtimePlayer rplayer;
@@ -85,9 +83,6 @@ public class MusicController implements Runnable{
 	         str += m.group() + " ";
 	      }
 	      return str.trim();
-	}
-	
-	public void run(){
 	}
 	public void PlayMusic(){
 		if(!alreadyExecuted) {
