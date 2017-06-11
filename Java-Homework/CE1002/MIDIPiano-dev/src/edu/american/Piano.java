@@ -36,6 +36,7 @@ import javafx.stage.Stage;
  * @author Meredith Myers
  */
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 
 public class Piano extends Application {
@@ -49,12 +50,17 @@ public class Piano extends Application {
         Group group = controller.getKeyBoard();
     	group.getChildren().add(root);
     	Scene piano = new Scene(group);
-    	piano.setFill(Color.LIGHTGRAY);
-        primaryStage.setTitle("Fx Piano");
+    	//piano.setFill(Color.LIGHTGRAY);
+    	piano.getStylesheets().add("piano.css");
+    	primaryStage.setTitle("Fx Piano");
+    	primaryStage.setHeight(600);
+    	primaryStage.setWidth(850);
         primaryStage.setScene(piano);
         primaryStage.show();
         controller.setScene(piano);
         primaryStage.setResizable(false);
+        System.out.print(primaryStage.getHeight());
+        System.out.print(primaryStage.getWidth());
         
     }
     public static void main(String[] args) {

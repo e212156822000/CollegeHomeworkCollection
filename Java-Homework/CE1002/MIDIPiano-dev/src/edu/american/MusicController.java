@@ -23,15 +23,18 @@ public class MusicController implements Runnable{
 	
     
 	private String[] Easy = {Little_Star,Little_Donkey,Little_Bee};
+	private String[] EasyName = {"小星星","我有一隻小毛驢","小蜜蜂"};
     private String[] Normal = {God_Rest_You,To_Alice};
+    private String[] NormalName = {"天賜奇蹟","給愛麗絲"};
     private String[] Hard = {Servent_Of_Evil,Sakura};
+    private String[] HardName = {"惡之召使","千本櫻"};
     //private boolean[] pass = {false,false,false};
 	public boolean pass = false;
     private int which_song = 0;
 	private String song_in_player = "";
 	private boolean alreadyExecuted  = false;
 	private Player player = new Player();
-	private String testsong = "",TestSongMelody = "";
+	private String testsong = "",TestSongMelody = "",TestSongName = "";
 	private final String REGEX = "[A-G](#)*[0-9]";
 	RealtimePlayer rplayer;
 	public void PickSong(String WhichLevel){
@@ -39,17 +42,24 @@ public class MusicController implements Runnable{
     	if(WhichLevel.equals("Easy")){
     		which_song = ran.nextInt(Easy.length);
     		song_in_player = Easy[which_song];
+    		TestSongName = EasyName[which_song];
     	}else if(WhichLevel.equals("Normal")){
     		which_song = ran.nextInt(Normal.length);
     		song_in_player = Normal[which_song];
+    		TestSongName = NormalName[which_song];
     	}else if(WhichLevel.equals("Hard")){
     		which_song = ran.nextInt(Hard.length);
     		song_in_player = Hard[which_song];
+    		TestSongName = HardName[which_song];
     	}
     	TestSongMelody = song_in_player;
 	}
 	public String getTestSong(){
 		return testsong;
+	}
+	public String getTestSongName(){
+		
+		return TestSongName;
 	}
 	public void setTestSong(String str){
 		testsong = str;
@@ -80,9 +90,6 @@ public class MusicController implements Runnable{
 	}
 	
 	public void run(){
-		while(!Thread.interrupted()){
-			System.out.print("x");
-		}
 	}
 	public void PlayMusic(){
 		if(!alreadyExecuted) {

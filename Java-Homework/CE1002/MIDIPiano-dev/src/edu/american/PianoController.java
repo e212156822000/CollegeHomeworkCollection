@@ -3,17 +3,17 @@ import java.io.File;
 import java.util.Random;
 
 import javax.sound.midi.MidiUnavailableException;
-import javafx.event.ActionEvent;
+
+import javafx.animation.FadeTransition;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -29,17 +29,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 public class PianoController {
-	@FXML
-    private Button PlayButton;
     @FXML
     private Button RetryButton;
     @FXML
     private Label level;
     @FXML
     private Label status;
-    @FXML
-    private Pane pane;
     private int Music_Scale = 3;
     private int Num_Keys = 7;
     private String[] white_keys = {"C","D","E","F","G","A","B"};
@@ -50,18 +47,32 @@ public class PianoController {
     private String AnswerMusic = "";
     DropShadow ds = new DropShadow( 20, Color.GOLDENROD );
     MusicController mc = new MusicController();
+    private StackPane stackpane = new StackPane();
     private Stage stage;
+    private FadeTransition fadeIn = new FadeTransition(Duration.millis(8000));
     @FXML
     private void initialize() {
-    	PlayButton.setText("開始彈奏");
     	RetryButton.setText("重新播放");
+    	
     	RetryButton.setOnAction(e -> ReplaySong(e));
     	level.setFont(new Font(50));
-    	status.setFont(new Font(30));
+    	status.setFont(new Font(20));
+    	level.setMaxWidth(Double.MAX_VALUE);
+    	level.setAlignment(Pos.TOP_CENTER);
+    	status.setAlignment(Pos.TOP_CENTER);
+    	level.setText("遊戲說明");
+    	status.setText("    遊戲的每一關都會有一段旋律，\n玩家只要依據自己的音感，成功彈\n出正確的旋律，就可以過關。按螢\n幕任意處即可開始遊戲。");
+    	level.setTextFill(Color.WHITE);
+		status.setTextFill(Color.WHITE);
+        fadeIn.setNode(status);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.playFromStart();
+		stackpane.setStyle("-fx-background-image: url('images/sky_fit.jpg')");
     }
     public void setScene(Scene scene) throws MidiUnavailableException{
     	//初始化關卡一
-    	stage = (Stage) PlayButton.getScene().getWindow();
+    	stage = (Stage) level.getScene().getWindow();
     	scene.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent arg0) {
@@ -74,7 +85,7 @@ public class PianoController {
     
     public Group getKeyBoard(){
     	Group group = new Group();
-        StackPane stackpane = new StackPane();
+        
         HBox PainoPanel = new HBox(3);
         PainoPanel.setPadding(new Insets(400, 12, 12, 12));
         
@@ -82,7 +93,7 @@ public class PianoController {
       
 	    	for(int i = 0;i < Music_Scale ; i++){
 	    		for(int j = 0;j< Num_Keys ;j++){
-	    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
+	    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+"1.png"));
 	    			imageView.setId(white_keys[j]+octave[i]);
 	    			imageView.setOnMouseClicked(e->ButtonClicked(e));
 	    			PainoPanel.getChildren().add(imageView);
@@ -106,8 +117,10 @@ public class PianoController {
 	    			}
 	    		}
 	    	}
+	    	
 	    	group.getChildren().add(stackpane);
-	   
+	    	
+	    	
     	return group;
     }
 
@@ -129,6 +142,42 @@ public class PianoController {
     		SetLevels(levels[++in_level]);
     	}
 	}
+    private void getPassScene(){
+    	
+    }
+	private void SetLevels(String Level){
+    	if(Level.equals("Easy")){
+    		level.setText("第一關");
+    		
+    	}else if(Level.equals("Normal")){
+    		level.setText("第二關");
+    		level.setTextFill(Color.GRAY);
+    		status.setTextFill(Color.GRAY);
+    		//ds = new DropShadow( 20, Color.GREEN );
+    		stackpane.setStyle("-fx-background-image: url('images/city_fit.jpg')");
+    	}else if(Level.equals("Hard")){
+    		level.setText("第三關");
+    		stackpane.setStyle("-fx-background-image: url('images/forest_fit.jpg')");
+    	}else{
+    		level.setText("恭喜過關");
+    	}
+    	/*
+    	ft.setFromValue(0.0);
+    	ft.setToValue(1.0);
+    	ft.play();
+    	*/
+    	mc.PickSong(Level);
+    	status.setText("播放歌曲："+mc.getTestSongName());
+		mc.PlayMusic();
+		mc.setTestSong(mc.SongFilter(mc.getTestSongMelody()));
+		System.out.println(mc.getTestSong());
+    }
+    private void ReplaySong(Event e){
+    	Button btn = (Button)e.getSource();
+    	mc.PutSongInPlayer(mc.getTestSongMelody());
+    	mc.PlayMusic();
+    	//btn.setDisable(true);
+    }
 
 /* 
     private void PlayMusicAndMarkTheKey(String ActionId) {
@@ -151,27 +200,5 @@ public class PianoController {
 			}
     	}
 	}
-*/    
-	private void SetLevels(String Level){
-    	if(Level.equals("Easy")){
-    		level.setText("第一關");
-    	}else if(Level.equals("Normal")){
-    		level.setText("第二關");
-    	}else if(Level.equals("Hard")){
-    		level.setText("第三關");
-    	}else{
-    		level.setText("恭喜過關");
-    	}
-    	status.setText("播放歌曲中...");
-    	mc.PickSong(Level);
-		mc.PlayMusic();
-		mc.setTestSong(mc.SongFilter(mc.getTestSongMelody()));
-		System.out.println(mc.getTestSong());
-    }
-    private void ReplaySong(Event e){
-    	Button btn = (Button)e.getSource();
-    	mc.PutSongInPlayer(mc.getTestSongMelody());
-    	mc.PlayMusic();
-    	//btn.setDisable(true);
-    }
+*/
 }
