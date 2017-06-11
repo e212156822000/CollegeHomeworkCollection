@@ -1,7 +1,4 @@
 package edu.american;
-import java.io.File;
-import java.util.Random;
-
 import javax.sound.midi.MidiUnavailableException;
 
 import javafx.animation.FadeTransition;
@@ -13,20 +10,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -55,6 +46,7 @@ public class PianoController {
     	RetryButton.setText("重新播放");
     	
     	RetryButton.setOnAction(e -> ReplaySong(e));
+    	RetryButton.setVisible(false);
     	level.setFont(new Font(50));
     	status.setFont(new Font(20));
     	level.setMaxWidth(Double.MAX_VALUE);
@@ -93,7 +85,7 @@ public class PianoController {
       
 	    	for(int i = 0;i < Music_Scale ; i++){
 	    		for(int j = 0;j< Num_Keys ;j++){
-	    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+"1.png"));
+	    			final ImageView imageView = new ImageView(new Image("images/"+white_keys[j]+".png"));
 	    			imageView.setId(white_keys[j]+octave[i]);
 	    			imageView.setOnMouseClicked(e->ButtonClicked(e));
 	    			PainoPanel.getChildren().add(imageView);
@@ -142,33 +134,43 @@ public class PianoController {
     		SetLevels(levels[++in_level]);
     	}
 	}
-    private void getPassScene(){
-    	
-    }
 	private void SetLevels(String Level){
+		RetryButton.setVisible(true);
     	if(Level.equals("Easy")){
     		level.setText("第一關");
-    		
+    		mc.PickSong(Level);
+        	status.setText("播放歌曲："+mc.getTestSongName());
+        	mc.PlayMusic();
     	}else if(Level.equals("Normal")){
     		level.setText("第二關");
     		level.setTextFill(Color.GRAY);
     		status.setTextFill(Color.GRAY);
     		//ds = new DropShadow( 20, Color.GREEN );
     		stackpane.setStyle("-fx-background-image: url('images/city_fit.jpg')");
+    		mc.PickSong(Level);
+        	status.setText("播放歌曲："+mc.getTestSongName());
+        	mc.PlayMusic();
     	}else if(Level.equals("Hard")){
     		level.setText("第三關");
     		stackpane.setStyle("-fx-background-image: url('images/forest_fit.jpg')");
+    		mc.PickSong(Level);
+        	status.setText("播放歌曲："+mc.getTestSongName());
+        	mc.PlayMusic();
     	}else{
     		level.setText("恭喜過關");
+    		status.setText("@插畫來源:恩力君\n");
+    		fadeIn.setNode(status);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.playFromStart();
+    		level.setTextFill(Color.WHITE);
+    		status.setTextFill(Color.WHITE);
+    		RetryButton.setVisible(false);
+    		stackpane.setStyle("-fx-background-image: url('images/fall_fit.jpg')");
+    		mc.PutSongInPlayer(mc.getTestSongMelody());
+        	mc.PlayMusic();
     	}
-    	/*
-    	ft.setFromValue(0.0);
-    	ft.setToValue(1.0);
-    	ft.play();
-    	*/
-    	mc.PickSong(Level);
-    	status.setText("播放歌曲："+mc.getTestSongName());
-		mc.PlayMusic();
+		
 		mc.setTestSong(mc.SongFilter(mc.getTestSongMelody()));
 		System.out.println(mc.getTestSong());
     }
@@ -176,7 +178,6 @@ public class PianoController {
     	Button btn = (Button)e.getSource();
     	mc.PutSongInPlayer(mc.getTestSongMelody());
     	mc.PlayMusic();
-    	//btn.setDisable(true);
     }
 
 /* 
