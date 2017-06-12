@@ -1,4 +1,4 @@
-== Crazy Piano 瘋狂鋼琴家
+== Crazy Pianist 瘋狂鋼琴家
 
 程式簡介：
 Java寫的小遊戲，遊戲方式是會播放一小段旋律，玩家憑著自己的音感，並且彈出正確的音就可以過關。
@@ -17,6 +17,7 @@ https://i.imgur.com/spHraLe.png
 
 1. 背景圖片：插畫家-恩力君 https://www.facebook.com/ZNG.LIFE/?fref=ts
 2. 音樂：惡之召使、千本櫻。
+3. 鋼琴琴鍵圖片：https://github.com/benjmyers/MIDIPiano
 
 == License
 
