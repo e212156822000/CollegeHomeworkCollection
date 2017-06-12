@@ -6,7 +6,7 @@ Java寫的小遊戲，遊戲方式是會播放一小段旋律，玩家憑著自�
 
 遊戲畫面：
 
-![](https://i.imgur.com/spHraLe.png)
+https://i.imgur.com/spHraLe.png
 
 使用套件：
 
@@ -15,7 +15,7 @@ Java寫的小遊戲，遊戲方式是會播放一小段旋律，玩家憑著自�
 
 使用資源：
 
-1. 背景圖片：插畫家 [恩力君](https://www.facebook.com/ZNG.LIFE/?fref=ts)
+1. 背景圖片：插畫家-恩力君 https://www.facebook.com/ZNG.LIFE/?fref=ts
 2. 音樂：惡之召使、千本櫻。
 
 == License
