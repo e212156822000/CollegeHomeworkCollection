@@ -11,12 +11,12 @@
   (
     title VARCHAR(30),
     name VARCHAR(30),
-    email data_type(size),
+    email VARCHAR(30),
     department VARCHAR(30),
     professor VARCHAR(30),
     message VARCHAR(30),
     ID INT NOT NULL AUTO_INCREMENT,
-    time INT(11);
+    time INT(11),
     PRIMARY KEY (ID)
   );
 </pre>
