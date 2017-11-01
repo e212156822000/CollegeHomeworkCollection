@@ -1,6 +1,23 @@
-== MIDI Piano
+== Crazy Pianist 瘋狂鋼琴家
 
-This was a project for my Intro to Comp Sci II class, in which we learned Java. The actual assignment only included adding the white piano keys and rhythm, but I decided to really fix mine up for extra credit. Sound and rhythm is accomplished using the JFugue API and I didn’t have very good luck getting it to sound good (maybe it’s improved by now?). But this was a fun project and I really liked doing the GUI layout. And, although it can’t really keep a beat, it is pretty fun to play with.
+程式簡介：
+Java寫的小遊戲，遊戲方式是會播放一小段旋律，玩家憑著自己的音感，並且彈出正確的音就可以過關。
+一共有三個關卡：簡單、普通跟困難。
+
+遊戲畫面：
+
+https://i.imgur.com/spHraLe.png
+
+使用套件：
+
+1. Jfugue
+2. Javafx
+
+使用資源：
+
+1. 背景圖片：插畫家-恩力君 https://www.facebook.com/ZNG.LIFE/?fref=ts
+2. 音樂：惡之召使、千本櫻。
+3. 鋼琴琴鍵圖片：https://github.com/benjmyers/MIDIPiano
 
 == License
 
