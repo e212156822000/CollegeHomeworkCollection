@@ -1,0 +1,23 @@
+10
+
+Insert index is out of range!!
+10
+
+6 10
+
+10 6
+
+10 6 1
+
+1 6 10
+
+1 6 10 3
+
+1 10 3
+
+Insert index is out of range!!
+1 10 3
+
+1 10 3 11
+
+11 3 10 1
